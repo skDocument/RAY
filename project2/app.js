@@ -9,7 +9,7 @@ function checkUser(newUser){
     let user = []; 
     allUsers.forEach((tr ,indx) =>{
         let arr = []
-        if(indx <2){
+        if(indx <=2){
             arr.push(tr.childNodes[1].innerHTML)
             arr.push(tr.childNodes[3].innerHTML)
         }
@@ -44,6 +44,12 @@ function addUser(event) {
     firstName = document.querySelector('.firstnameInput').value
     lastName = document.querySelector('.lastnameInput').value
     let newUser = firstName + ' ' + lastName;
+
+    if(firstName == '' || lastName == ''){
+        document.querySelector('.validateMassage').innerHTML = 'همه ی فیلد ها را پرکنید';
+        return false
+
+    }
     if(checkUser(newUser)){
         document.querySelector('.validateMassage').innerHTML = 'کاربر در لیست وجود دارد'
     }
